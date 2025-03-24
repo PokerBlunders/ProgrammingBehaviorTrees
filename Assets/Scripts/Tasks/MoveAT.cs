@@ -10,23 +10,17 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class MoveAT : ActionTask 
 	{
-		public Transform targetPoint;
-		public NavMeshAgent guard;
-
-
-        protected override string OnInit() 
-		{
-			return null;
-		}
+		public BBParameter<Transform> targetPoint;
+		public NavMeshAgent hunter;
 
 		protected override void OnExecute() 
 		{
-			guard.destination = targetPoint.position;
+            hunter.destination = targetPoint.value.position;
 		}
 
 		protected override void OnUpdate() 
 		{
-			if ((targetPoint.transform.position - guard.transform.position).sqrMagnitude < 0.25)
+			if ((targetPoint.value.position - hunter.transform.position).sqrMagnitude < 0.25)
 			{
                 EndAction(true);
 			}

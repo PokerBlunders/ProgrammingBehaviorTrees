@@ -6,13 +6,18 @@ using UnityEngine;
 namespace NodeCanvas.Tasks.Conditions 
 {
 
-	public class PlayerInputCT : ConditionTask 
+	public class CheckTrapCT : ConditionTask 
 	{
+		public GameObject trap;
 
 		protected override bool OnCheck() 
 		{
-			if (Input.GetKey(KeyCode.Space)) return true;
-			else return false;
+			if (trap.activeInHierarchy)
+			{
+                return true;
+            }
+
+			return false;
 		}
 	}
 }
